@@ -25,12 +25,18 @@ import { useUserContext } from "@/context/AuthContext";
 
 const SignupForm = () => {
   const { toast } = useToast();
-  const {checkAuthUser, isLoading: isUserLoading} = useUserContext();
+  const {
+    checkAuthUser, 
+    // isLoading: isUserLoading
+  } = useUserContext();
   const navigate = useNavigate();
 
   const { mutateAsync: createUserAccount, isPending: isCreatingAccount} = useCreateUserAccount();
 
-  const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount();
+  const { 
+        mutateAsync: signInAccount, 
+        // isPending: isSigningIn 
+      } = useSignInAccount();
 
    // 1. Define form.
    const form = useForm<z.infer<typeof SignupValidation>>({
@@ -77,7 +83,7 @@ const SignupForm = () => {
             <div className="sm:w-420 flex-center flex-col">
               <img src="/assets/images/logo.svg" alt="logo" />
               <h2 className="h3=bold md:h2-bold pt-5 sm:pt-12">Create A New Account</h2>
-              <p className="text-light-3 small-medium md:base-regular mt-2">To use Bonigram please enter your details</p>
+              <p className="text-light-3 small-medium md:base-regular mt-2">To use Snapgram please enter your details</p>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full mt-4">
           <FormField

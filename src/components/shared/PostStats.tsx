@@ -37,7 +37,9 @@ const PostStats = ({post, userId}: PostStatsProps) => {
     }
 
     setLikes(newLikes);
-    likePost({postId: post.$id, likesArray: newLikes})
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+    likePost({postId: post?.$id, likesArray: newLikes})
   }
 
   useEffect(() => {

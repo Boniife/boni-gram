@@ -40,6 +40,8 @@ const UpdateProfile = () => {
 
   // Queries
   const { data: currentUser } = useGetUserById(id || "");
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
   const { mutateAsync: updateUser, isLoading: isLoadingUpdate } =
     useUpdateUser();
 
