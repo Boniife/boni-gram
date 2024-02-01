@@ -7,9 +7,30 @@ import GridPostList from "@/components/shared/GridPostList";
 import { useGetPosts, useSearchPosts } from "@/lib/react-query/queriesAndMutations";
 import { Input } from "@/components/ui/input";
 
+
+type searchDocumentsProps = {
+  $collectionId: string;
+  $createdAt: string;
+  $databaseId: string;
+  $id: string;
+  $permissions: [];
+  $updatedAt: string;
+  caption: string;
+  creator: object;
+  imageId: string;
+  imageUrl: string;
+  likes: [];
+  location: string;
+  save: [];
+  tags: [];
+}
+export type searchedPostProps = {
+documents: searchDocumentsProps[];
+}
+
 export type SearchResultProps = {
   isSearchFetching: boolean;
-  searchedPosts: any;
+  searchedPosts?: searchedPostProps;
 };
 
 const SearchResults = ({ isSearchFetching, searchedPosts }: SearchResultProps) => {
@@ -31,6 +52,7 @@ const Explore = () => {
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearch = useDebounce(searchValue, 500);
   const { data: searchedPosts, isFetching: isSearchFetching } = useSearchPosts(debouncedSearch);
+  console.log(searchedPosts)
 
   useEffect(() => {
     if (inView && !searchValue) {
@@ -91,6 +113,8 @@ const Explore = () => {
         {shouldShowSearchResults ? (
           <SearchResults
             isSearchFetching={isSearchFetching}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             searchedPosts={searchedPosts}
           />
         ) : shouldShowPosts ? (
