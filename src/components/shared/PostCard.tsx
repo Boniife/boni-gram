@@ -27,7 +27,7 @@ const PostCard = ({post}: PostCardProps) => {
 
           <div className="flex flex-col">
             <p className="base-medium lg:body-bold text-light-1">
-                {post.creator.name}
+                {post.creator.username}
             </p>
             <div className="flex-center gap-2 text-light-3">
               <p className="subtle-semibold lg:small-regular">
